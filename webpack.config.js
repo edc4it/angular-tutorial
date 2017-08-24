@@ -7,8 +7,8 @@ module.exports = {
         extensions: ['.js', '.ts']
     },
     entry: {
-        main: "./src/app.ts",
-        vendor: "./src/vendor.js"
+        polyfills: "./src/polyfills.ts",
+        main: "./src/app.ts"
     },
     output: {
         path: path.resolve(__dirname, 'dist'), // output directory
@@ -30,8 +30,12 @@ module.exports = {
                 loader: 'tslint-loader'
             },
             {
+                test: /\.html$/,
+                loader: "html-loader"
+            },
+            {
                 test: /\.scss$/,
-                loader: ["style-loader", "css-loader?sourceMap", "sass-loader?sourceMap"]
+                loader: ["raw-loader", "sass-loader?sourceMap"]
             }
         ]
     },
@@ -39,9 +43,10 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: "src/index.html",
             inject: "body"
-        }),
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'vendor'
         })
-    ]
+    ],
+    devtool: "source-map",
+    devServer: {
+        historyApiFallback: true
+    }
 };
