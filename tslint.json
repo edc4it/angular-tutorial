@@ -1,12 +1,13 @@
 {
-  "defaultSeverity": "error",
-  "extends": [
-    "tslint:recommended"
-  ],
-  "jsRules": {},
-  "rules": {
-    "member-access": false,
-    "eofline": false
-  },
-  "rulesDirectory": []
+    "defaultSeverity": "error",
+    "extends": [
+        "tslint:recommended"
+    ],
+    "jsRules": {},
+    "rules": {
+        "member-access": false,
+        "eofline": false,
+        "object-literal-sort-keys":  false
+    },
+    "rulesDirectory": []
 }
