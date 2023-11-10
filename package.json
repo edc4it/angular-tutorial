@@ -17,6 +17,7 @@
     "html-webpack-plugin": "^5.5.3",
     "jquery": "^3.7.1",
     "node-sass": "^9.0.0",
+    "raw-loader": "^4.0.2",
     "sass-loader": "^13.3.2",
     "html-loader": "^4.2.0",
     "babel-loader": "^9.1.3",
