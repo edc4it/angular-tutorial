@@ -1,5 +1,6 @@
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import linkerPlugin from '@angular/compiler-cli/linker/babel';
+import { AngularWebpackPlugin } from "@ngtools/webpack";
 
 import { fileURLToPath } from 'url';
 import path from 'path';
@@ -26,6 +27,10 @@ export default {
 
     module: {
         rules: [
+            {
+                test: /\.[jt]sx?$/,
+                loader: "@ngtools/webpack",
+            },
             {
                 test: /\.m?js$/,
                 use: {
@@ -73,7 +78,10 @@ export default {
             template: "./src/index.html",
             inject : "body",
             scriptLoading: "blocking"
-        })
+        }),
+        new AngularWebpackPlugin({
+            tsconfig: "./tsconfig.json",
+        }),
     ],
 
 };
