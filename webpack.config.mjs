@@ -15,10 +15,15 @@ export default {
     resolve: {
         extensions: ['.js', '.ts']
     },
+    devtool: "source-map",
+    devServer: {
+        historyApiFallback: true
+    },
     output: {
         path: path.resolve(__dirname, 'dist'), // output directory
         filename: "[name].js" // name of the generated bundle
     },
+
     module: {
         rules: [
             {
@@ -38,14 +43,20 @@ export default {
                 exclude: /node_modules/,
             },
             {
+                test: /\.html$/,
+                loader: "html-loader",
+                options: {
+                    esModule: false,
+                },
+            },
+            {
                 test: /\.scss$/,
                 use: [
-                    "style-loader",
                     {
-                        loader: "css-loader",
+                        loader: "raw-loader",
                         options: {
-                            sourceMap: true,
-                        },
+                            esModule: false,
+                        }
                     },
                     {
                         loader: "sass-loader",
