@@ -1,0 +1,7 @@
+{
+  "rules": {
+    "member-access": false,
+    "eofline": false,
+    "object-literal-sort-keys": false
+  }
+}
